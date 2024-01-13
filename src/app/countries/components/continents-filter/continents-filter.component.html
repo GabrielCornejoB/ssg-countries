@@ -1,0 +1,22 @@
+<ul class="menu menu-horizontal px-1">
+  <li class="rounded-md bg-neutral">
+    <details>
+      <summary class="w-52 text-base">
+        @if (selectedContinent === null) {
+          Filter by Continent
+        } @else {
+          {{ selectedContinent }}
+        }
+      </summary>
+      <ul class="w-full rounded-lg bg-neutral">
+        @for (continent of continents; track $index) {
+          <li>
+            <a class="text-base">
+              {{ continent }}
+            </a>
+          </li>
+        }
+      </ul>
+    </details>
+  </li>
+</ul>
