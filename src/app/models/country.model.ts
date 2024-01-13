@@ -31,14 +31,16 @@ interface Maps {
   openStreetMaps: string;
 }
 
-type Continent =
-  | 'Africa'
-  | 'Antarctica'
-  | 'Asia'
-  | 'Europe'
-  | 'North America'
-  | 'Oceania'
-  | 'South America';
+export const continents = [
+  'Africa',
+  'Antarctica',
+  'Asia',
+  'Europe',
+  'North America',
+  'Oceania',
+  'South America',
+] as const;
+type Continent = (typeof continents)[number];
 
 interface CoatOfArms {
   png?: string;
