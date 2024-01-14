@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-import { CountryMini } from '../../models';
+import { CountryMini } from '@models/index';
 
 @Component({
   selector: 'app-country-card',

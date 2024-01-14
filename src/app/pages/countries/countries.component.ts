@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CountriesService } from '../../services/countries.service';
-import { CountryMini } from '../../models';
 import {
   ContinentsFilterComponent,
   CountryCardComponent,
-} from '../../components';
+} from '@components/index';
+import { CountryMini } from '@models/index';
+import { CountriesService } from '@services/index';
 
 @Component({
   selector: 'app-countries',
