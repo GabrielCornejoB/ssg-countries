@@ -3,7 +3,7 @@
     <span></span>
     <app-continents-filter />
   </div>
-  <div class="grid-cols-auto my-8 grid w-full justify-center gap-4">
+  <div class="my-8 grid w-full grid-cols-auto justify-center gap-4">
     @for (country of countries; track $index) {
       <app-country-card [country]="country" />
     }

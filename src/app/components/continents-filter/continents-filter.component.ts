@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { continents } from '../../../models';
+
+import { continents } from '../../models';
 
 @Component({
   selector: 'app-continents-filter',
