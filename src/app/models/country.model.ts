@@ -17,6 +17,7 @@ export interface Country {
   flags: Flags;
   coatOfArms: CoatOfArms;
   borders?: string[];
+  demonyms?: { eng: { m: string } };
 }
 
 interface Name {
