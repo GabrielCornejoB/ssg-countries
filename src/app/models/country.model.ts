@@ -1,3 +1,5 @@
+import { REGIONS } from '@constants/index';
+
 export interface Country {
   name: Name;
   tld?: string[];
@@ -11,6 +13,7 @@ export interface Country {
   population: number;
   timezones: string[];
   continents: Continent[];
+  region: Region;
   flags: Flags;
   coatOfArms: CoatOfArms;
   borders?: string[];
@@ -41,6 +44,8 @@ export const continents = [
   'South America',
 ] as const;
 type Continent = (typeof continents)[number];
+
+type Region = (typeof REGIONS)[number];
 
 interface CoatOfArms {
   png?: string;

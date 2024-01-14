@@ -4,5 +4,5 @@ export interface CountryMini {
   cca3: string;
   flagEmoji: string;
   flagImageUrl: string;
-  continents: string[];
+  region: string;
 }
