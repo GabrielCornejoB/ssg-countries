@@ -18,13 +18,7 @@
         {{ country.name }}
       </h2>
       <div class="flex flex-col">
-        @if (country.continents.length > 1) {
-          <span>
-            <strong>Continents:</strong> {{ country.continents.join(", ") }}
-          </span>
-        } @else {
-          <span><strong>Continent:</strong> {{ country.continents[0] }} </span>
-        }
+        <span><strong>Region:</strong> {{ country.region }} </span>
         <span><strong>Area:</strong> {{ country.area | number }} km²</span>
       </div>
     </div>

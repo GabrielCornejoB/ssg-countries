@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {
-  ContinentsFilterComponent,
+  FilterByRegionComponent,
   CountryCardComponent,
 } from '@components/index';
 import { CountryMini } from '@models/index';
@@ -10,7 +10,7 @@ import { CountriesService } from '@services/index';
 @Component({
   selector: 'app-countries',
   standalone: true,
-  imports: [ContinentsFilterComponent, CountryCardComponent],
+  imports: [FilterByRegionComponent, CountryCardComponent],
   templateUrl: './countries.component.html',
 })
 export class CountriesComponent implements OnInit {

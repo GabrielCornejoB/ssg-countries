@@ -22,7 +22,7 @@ export class CountriesService {
             cca3: country.cca3,
             flagEmoji: country.flag,
             flagImageUrl: country.flags.png,
-            continents: country.continents,
+            region: country.region,
           };
           return countryMini;
         }),
