@@ -1,0 +1,6 @@
+/by-region/Africa
+/by-region/Americas
+/by-region/Antarctic
+/by-region/Asia
+/by-region/Europe
+/by-region/Oceania

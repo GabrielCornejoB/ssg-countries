@@ -9,6 +9,10 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'by-region/:region',
+    component: CountriesComponent,
+  },
+  {
     path: '**',
     redirectTo: '/',
   },

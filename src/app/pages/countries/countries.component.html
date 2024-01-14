@@ -3,9 +3,11 @@
     <span></span>
     <app-filter-by-region />
   </div>
-  <div class="my-8 grid w-full grid-cols-auto justify-center gap-4">
-    @for (country of countries; track $index) {
-      <app-country-card [country]="country" />
-    }
-  </div>
+  @if (countries$ | async; as countries) {
+    <div class="my-8 grid w-full grid-cols-auto justify-center gap-4">
+      @for (country of countries; track $index) {
+        <app-country-card [country]="country" />
+      }
+    </div>
+  }
 </div>
