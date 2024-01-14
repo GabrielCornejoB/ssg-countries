@@ -1,6 +1,11 @@
-<div class="px-20">
+<div class="px-4 lg:px-20">
   <div class="flex w-full flex-row items-center justify-between">
     <span></span>
     <app-continents-filter />
+  </div>
+  <div class="grid-cols-auto my-8 grid w-full justify-center gap-4">
+    @for (country of countries; track $index) {
+      <app-country-card [country]="country" />
+    }
   </div>
 </div>

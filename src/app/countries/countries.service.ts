@@ -14,13 +14,17 @@ export class CountriesService {
   getAll(): Observable<CountryMini[]> {
     return this.http.get<Country[]>(`${API_BASE_URL}/all`).pipe(
       map((countries) =>
-        countries.map((country) => ({
-          name: country.name,
-          cca3: country.cca3,
-          area: country.area,
-          flags: country.flags,
-          continents: country.continents,
-        })),
+        countries.map((country) => {
+          const countryMini: CountryMini = {
+            name: country.name.common,
+            area: country.area,
+            cca3: country.cca3,
+            flagEmoji: country.flag,
+            flagImageUrl: country.flags.png,
+            continents: country.continents,
+          };
+          return countryMini;
+        }),
       ),
     );
   }

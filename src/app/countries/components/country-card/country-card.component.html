@@ -1,0 +1,32 @@
+@if (country !== null) {
+  <a
+    [routerLink]="['country-details', country.cca3]"
+    title="{{ country.flagEmoji }} | {{ country.name }}"
+    class="card card-compact cursor-pointer bg-neutral shadow-xl transition-colors hover:bg-base-100"
+  >
+    <figure>
+      <img
+        [src]="country.flagImageUrl"
+        [alt]="country.flagEmoji"
+        class="aspect-video"
+      />
+    </figure>
+    <div class="card-body">
+      <h2
+        class="card-title block overflow-hidden text-ellipsis whitespace-nowrap"
+      >
+        {{ country.name }}
+      </h2>
+      <div class="flex flex-col">
+        @if (country.continents.length > 1) {
+          <span>
+            <strong>Continents:</strong> {{ country.continents.join(", ") }}
+          </span>
+        } @else {
+          <span><strong>Continent:</strong> {{ country.continents[0] }} </span>
+        }
+        <span><strong>Area:</strong> {{ country.area | number }} km²</span>
+      </div>
+    </div>
+  </a>
+}
