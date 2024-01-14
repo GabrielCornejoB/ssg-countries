@@ -1,5 +1,8 @@
-import { Country } from './country.model';
-
-type CountryMiniProperties = 'name' | 'cca3' | 'area' | 'flags' | 'continents';
-
-export interface CountryMini extends Pick<Country, CountryMiniProperties> {}
+export interface CountryMini {
+  name: string;
+  area: number;
+  cca3: string;
+  flagEmoji: string;
+  flagImageUrl: string;
+  continents: string[];
+}
