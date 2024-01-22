@@ -2,9 +2,10 @@ import { AsyncPipe, DecimalPipe, JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
-import { Country } from '@models/country.model';
+import { CountryRequest } from '@models/country.model';
 import { Observable, catchError, of, switchMap } from 'rxjs';
 import { CountriesService } from '@services/countries.service';
+import { CountryDetail } from '@models/country-detail.model';
 
 @Component({
   selector: 'app-country-detail',
@@ -13,7 +14,7 @@ import { CountriesService } from '@services/countries.service';
   templateUrl: './country-detail.component.html',
 })
 export class CountryDetailComponent implements OnInit {
-  country$: Observable<Country | null> = new Observable();
+  country$: Observable<CountryDetail | null> = new Observable();
 
   constructor(
     private aRoute: ActivatedRoute,

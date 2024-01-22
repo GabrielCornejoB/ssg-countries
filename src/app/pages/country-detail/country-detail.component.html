@@ -1,36 +1,101 @@
 @if (country$ | async; as country) {
-  <div class="flex flex-row px-20">
+  <div class="flex flex-col items-center px-20 pt-4">
     <aside class="flex flex-col gap-4">
-      <a routerLink="/" class="btn btn-neutral">Go Back to Home</a>
+      <a routerLink="/" class="btn btn-neutral rounded-xl">Go Back to Home</a>
 
-      <div class="card w-96 bg-neutral shadow-xl">
-        <figure class="px-10 pt-10">
-          <img
-            [src]="country.coatOfArms.png"
-            alt="Coat of arms"
-            class="w-72 rounded-xl bg-white p-4"
-          />
-        </figure>
-        <div class="card-body items-center text-center">
-          <h1 class="card-title text-4xl font-bold">
-            {{ country.name.common }}
-          </h1>
-          <div class="divider m-0"></div>
-          <div class="stats stats-vertical w-72">
-            <div class="stat">
-              <div class="stat-title">Population</div>
-              <div class="stat-value">{{ country.population | number }}</div>
-              <div class="stat-desc">
-                {{ country.demonyms?.eng?.m + "s" || "People" }}
+      <div class="card flex flex-row bg-neutral p-10 shadow-xl">
+        <div class="flex flex-col">
+          <figure>
+            <img
+              [src]="
+                country.coatOfArms.png ||
+                'https://static.vecteezy.com/system/resources/previews/018/887/528/original/earth-globe-icon-png.png'
+              "
+              alt="Coat of arms"
+              class="w-52 rounded-xl"
+            />
+          </figure>
+          <div class="card-body items-center p-0 pr-4 pt-7 text-center">
+            <h1 class="card-title pb-4 text-4xl font-bold">
+              {{ country.name.common }} {{ country.flag }}
+            </h1>
+            <div class="stats stats-vertical w-72">
+              <div class="stat px-0">
+                <div class="stat-title">Population</div>
+                <div class="stat-value">{{ country.population | number }}</div>
+                <div class="stat-desc">
+                  {{ country.demonym }}
+                </div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Area</div>
+                <div class="stat-value">{{ country.area | number }}</div>
+                <div class="stat-desc">square kilometers</div>
               </div>
             </div>
-
-            <div class="stat">
-              <div class="stat-title">Area</div>
-              <div class="stat-value">{{ country.area | number }}</div>
-              <div class="stat-desc">square kilometers</div>
-            </div>
           </div>
+        </div>
+        <div class="divider divider-horizontal"></div>
+
+        <div class="flex w-96 flex-col">
+          <h2 class="text-xl font-bold">Country Details:</h2>
+          <span>
+            <strong class="font-semibold">Official Name: </strong>
+            {{ country.name.official }}
+          </span>
+          <span>
+            <strong class="font-semibold">Capital: </strong>
+            {{ country.capital }}
+          </span>
+          <span>
+            <strong class="font-semibold">
+              @if (country.hasMultipleCurrencies) {
+                Currencies:
+              } @else {
+                Currency:
+              }
+            </strong>
+            {{ country.currencies }}
+          </span>
+          <span>
+            <strong class="font-semibold">
+              @if (country.hasMultipleLanguages) {
+                Languages:
+              } @else {
+                Language:
+              }
+            </strong>
+            {{ country.languages }}
+          </span>
+
+          <div class="divider"></div>
+
+          <h2 class="text-xl font-bold">Geographical info:</h2>
+          <span>
+            <strong class="font-semibold">
+              @if (country.isInMultipleContinents) {
+                Continents:
+              } @else {
+                Continent:
+              }
+            </strong>
+            <span> {{ country.continents }} </span>
+          </span>
+          <span>
+            <strong class="font-semibold">Region: </strong> {{ country.region }}
+          </span>
+          <span>
+            <strong class="font-semibold">Sub-region: </strong>
+            {{ country.subregion }}
+          </span>
+
+          <div class="divider"></div>
+
+          <h2 class="text-xl font-bold">Borders:</h2>
+          @for (border of country.borders; track $index) {
+            <span> {{ border }} </span>
+          }
         </div>
       </div>
     </aside>

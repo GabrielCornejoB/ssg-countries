@@ -1,6 +1,6 @@
 import { REGIONS } from '@constants/index';
 
-export interface Country {
+export interface CountryRequest {
   name: Name;
   tld?: string[];
   cca3: string;
@@ -14,6 +14,7 @@ export interface Country {
   timezones: string[];
   continents: Continent[];
   region: Region;
+  subregion: string;
   flags: Flags;
   coatOfArms: CoatOfArms;
   borders?: string[];
