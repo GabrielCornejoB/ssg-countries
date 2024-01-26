@@ -1,12 +1,14 @@
 @if (country$ | async; as country) {
-  <div class="flex flex-col items-center px-20 pt-4">
+  <div class="flex flex-col items-center px-4 pb-4 lg:px-20 lg:pt-4">
     <aside class="flex flex-col gap-4">
       <a routerLink="/" class="btn btn-neutral w-40 rounded-xl">
         Go Back to Home
       </a>
 
-      <div class="card flex flex-row bg-neutral p-10 shadow-xl">
-        <div class="flex flex-col justify-between pr-4">
+      <div
+        class="card flex flex-col bg-neutral p-5 shadow-xl lg:flex-row lg:p-10"
+      >
+        <div class="flex flex-col justify-between lg:pr-4">
           <figure>
             <img
               [src]="
@@ -24,8 +26,8 @@
             </h1>
           </div>
 
-          <div class="max-h-fit items-center p-0 text-center">
-            <div class="stats stats-vertical w-72">
+          <div class="items-center p-0 text-center">
+            <div class="stats stats-vertical w-full lg:w-72">
               <div class="stat px-0">
                 <div class="stat-title">Population</div>
                 <div class="stat-value">{{ country.population | number }}</div>
@@ -43,14 +45,14 @@
           </div>
         </div>
 
-        <div class="divider divider-horizontal"></div>
+        <div class="divider divider-vertical lg:divider-horizontal"></div>
 
-        <div class="flex w-96 flex-col">
+        <div class="flex flex-col lg:w-96">
           <h2 class="text-xl font-bold">Country Details:</h2>
-          <span>
+          <p>
             <strong class="font-semibold">Official Name: </strong>
             {{ country.name.official }}
-          </span>
+          </p>
           <span>
             <strong class="font-semibold">Capital: </strong>
             {{ country.capital }}
