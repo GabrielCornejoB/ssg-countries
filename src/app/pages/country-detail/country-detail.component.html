@@ -1,10 +1,12 @@
 @if (country$ | async; as country) {
   <div class="flex flex-col items-center px-20 pt-4">
     <aside class="flex flex-col gap-4">
-      <a routerLink="/" class="btn btn-neutral rounded-xl">Go Back to Home</a>
+      <a routerLink="/" class="btn btn-neutral w-40 rounded-xl">
+        Go Back to Home
+      </a>
 
       <div class="card flex flex-row bg-neutral p-10 shadow-xl">
-        <div class="flex flex-col">
+        <div class="flex flex-col justify-between pr-4">
           <figure>
             <img
               [src]="
@@ -15,10 +17,14 @@
               class="w-52 rounded-xl"
             />
           </figure>
-          <div class="card-body items-center p-0 pr-4 pt-7 text-center">
-            <h1 class="card-title pb-4 text-4xl font-bold">
+
+          <div class="flex justify-center py-4 text-center">
+            <h1 class="card-title text-4xl font-bold">
               {{ country.name.common }} {{ country.flag }}
             </h1>
+          </div>
+
+          <div class="max-h-fit items-center p-0 text-center">
             <div class="stats stats-vertical w-72">
               <div class="stat px-0">
                 <div class="stat-title">Population</div>
@@ -36,6 +42,7 @@
             </div>
           </div>
         </div>
+
         <div class="divider divider-horizontal"></div>
 
         <div class="flex w-96 flex-col">
@@ -93,9 +100,20 @@
           <div class="divider"></div>
 
           <h2 class="text-xl font-bold">Borders:</h2>
-          @for (border of country.borders; track $index) {
-            <span> {{ border }} </span>
-          }
+          <div class="mt-2 flex flex-row flex-wrap gap-3">
+            @if (country.borders !== null) {
+              @for (border of country.borders; track $index) {
+                <a
+                  class="cursor-pointer rounded-md bg-base-200 px-2 py-1 transition-all hover:bg-opacity-50"
+                  [routerLink]="['/country-details', border.cca3]"
+                >
+                  {{ border.name }} {{ border.flag }}
+                </a>
+              }
+            } @else {
+              {{ country.name.common }} has no border countries.
+            }
+          </div>
         </div>
       </div>
     </aside>

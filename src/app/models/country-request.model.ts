@@ -1,4 +1,5 @@
 import { REGIONS } from '@constants/index';
+import { Border } from './border.model';
 
 export interface CountryRequest {
   name: Name;
@@ -19,6 +20,11 @@ export interface CountryRequest {
   coatOfArms: CoatOfArms;
   borders?: string[];
   demonyms?: { eng: { m: string } };
+}
+
+export interface CountryRequestWithBorders
+  extends Omit<CountryRequest, 'borders'> {
+  borders: Border[] | null;
 }
 
 interface Name {

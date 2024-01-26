@@ -1,4 +1,5 @@
-import { CountryRequest } from './country.model';
+import { Border } from './border.model';
+import { CountryRequest } from './country-request.model';
 
 export interface CountryDetail
   extends Pick<
@@ -20,5 +21,5 @@ export interface CountryDetail
   hasMultipleCurrencies: boolean;
   languages: string;
   hasMultipleLanguages: boolean;
-  borders: string[];
+  borders: Border[] | null;
 }

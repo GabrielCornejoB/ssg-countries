@@ -1,8 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap, tap } from 'rxjs';
+import { Observable, forkJoin, map, switchMap, tap, of } from 'rxjs';
 
-import { CountryRequest, CountryMini } from '@models/index';
+import {
+  CountryRequest,
+  CountryMini,
+  Border,
+  CountryRequestWithBorders,
+} from '@models/index';
 import { CountryDetail } from '@models/country-detail.model';
 
 const API_BASE_URL = 'https://restcountries.com/v3.1';
@@ -18,15 +23,31 @@ export class CountriesService {
       .get<CountryRequest[]>(`${API_BASE_URL}/alpha/${cca3}`)
       .pipe(
         map((data) => data[0]),
-        // switchMap((data) => ), //checkout forkjoin or other combination operators
+        switchMap((country) => {
+          if (country.borders) {
+            const borders$: Observable<Border>[] = country.borders.map(
+              (border) => this.getCountryName(border),
+            );
+            return forkJoin(borders$).pipe(
+              map((borders) => ({ ...country, borders: [...borders] })),
+            );
+          }
+          return of({ ...country, borders: null });
+        }),
         map((country) => this.transformCountryToCountryDetail(country)),
       );
   }
 
-  getCountryName(cca3: string): Observable<string> {
+  getCountryName(cca3: string): Observable<Border> {
     return this.http
       .get<CountryRequest[]>(`${API_BASE_URL}/alpha/${cca3}`)
-      .pipe(map((data) => data[0].name.common));
+      .pipe(
+        map((data) => ({
+          name: data[0].name.common,
+          cca3,
+          flag: data[0].flag,
+        })),
+      );
   }
 
   getAll(): Observable<CountryMini[]> {
@@ -58,7 +79,9 @@ export class CountriesService {
     }));
   }
 
-  transformCountryToCountryDetail(country: CountryRequest): CountryDetail {
+  transformCountryToCountryDetail(
+    country: CountryRequestWithBorders,
+  ): CountryDetail {
     const { currencies, languages, borders } = country;
 
     let currenciesStr: string = 'n/a';
@@ -96,9 +119,7 @@ export class CountriesService {
       languages: languagesStr,
       hasMultipleLanguages: hasMultipleLanguages,
       flag: country.flag,
-      borders: country.borders
-        ? country.borders
-        : [`${country.name.common} has no border countries.`],
+      borders: country.borders,
     };
     return countryDetail;
   }
