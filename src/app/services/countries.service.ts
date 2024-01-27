@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin, map, switchMap, tap, of } from 'rxjs';
+import { Observable, forkJoin, map, switchMap, of } from 'rxjs';
 
 import {
   CountryRequest,

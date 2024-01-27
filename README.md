@@ -1,27 +1,29 @@
-# SsgCountries
+# SSS Countries
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Application that showcases the countries of the world and some details of each one of them!
 
-## Development server
+## Why did I create this?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**SSG Countries** is a _re-do_ of one of my first applications while I was learning web development, you can find the original [here](https://github.com/GabrielCornejoB/fem-rest-countries-api). In the original version I made a lot of mistakes and this one is not perfect either, I just wanted to make it a little bit prettier and with some good practices.
 
-## Code scaffolding
+## Technologies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Angular](https://img.shields.io/badge/Angular-f41e6f?style=for-the-badge&logo=angular&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3bbdf8?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Daisy_UI-15d1a5?style=for-the-badge&logo=daisyui&logoColor=white)
+![Netflify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
-## Build
+## Cool stuff I learned
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Even though this web application is really simple I learned and tried out some cool stuff, some where:
 
-## Running unit tests
+- New Angular 17 Syntax Flow.
+- Creating pre-rendered (SSG) applications with Angular.
+- Used the RxJs `forkJoin` operator to combine observables instead of having a subscription hell.
+- Netlify CLI for deploying Angular apps.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Notes for the future me / Some opinions
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Even though Angular 17 came with improvements in SSR and SSG, I still think that SPAs are the main strenght of Angular applications, so if you want to create apps that required that type of rendering it is better to use Astro or Next/Nuxt.
+- You should try going back to using pure CSS in some projects, tailwind is great but you are way to comfortable with it and that's no good.
+- Angular is cool but it is getting a bit overwhelming with the amount of changes it has every year, also React has a way bigger market so you should also go back to it.
